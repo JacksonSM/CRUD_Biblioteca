@@ -10,4 +10,5 @@ public class Livro
 
     public int EditoraId { get; set; }
     public Editora Editora { get; set; }
+
 }
