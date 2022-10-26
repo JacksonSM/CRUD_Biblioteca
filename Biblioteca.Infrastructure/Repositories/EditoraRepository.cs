@@ -51,5 +51,21 @@ public class EditoraRepository : IEditoraRepository
         return await _session.Connection.QueryAsync<Editora>(query);
     }
 
+    public async Task UpdateAsync(int id, Editora editora)
+    {
+        var query =
+        @"UPDATE [Biblioteca].[dbo].[Editoras]
+          SET [RazaoSocial] = @razaoSocial, [Email] = @email, [Telefone] = @telefone
+          WHERE Id = @id";
+
+        var parameters = new
+        {
+            Id = id,
+            RazaoSocial = editora.RazaoSocial,
+            Email = editora.Email,
+            Telefone = editora.Telefone
+        };
+        await _session.Connection.ExecuteAsync(query, parameters, _session.Transaction);
+    }
 
 }

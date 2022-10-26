@@ -16,6 +16,17 @@ namespace Biblioteca.Application.UseCases.Tools
                     telefone: editoraCommand.Telefone
                 );
         }
+        public static Editora ParseEditora(AtualizarEditoraCommand editoraCommand)
+        {
+           var tes = new Editora
+                    (
+                        razaoSocial: editoraCommand.RazaoSocial,
+                        email: editoraCommand.Email,
+                        telefone: editoraCommand.Telefone
+                    );
+            tes.Id = editoraCommand.Id;
+            return tes;
+        }
         public static EditoraDTO ParseEditoraDTO(Editora editora)
         {
             return

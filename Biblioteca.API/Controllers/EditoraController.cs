@@ -32,4 +32,14 @@ public class EditoraController : ControllerBase
         var command = new GetByIdCommand { Id = id };
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
     }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(
+    int id,
+    [FromBody] AtualizarEditoraCommand command,
+    [FromServices] AtualizarEditoraHandler handler)
+    {
+        command.SetId(id);
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
+    }
 }

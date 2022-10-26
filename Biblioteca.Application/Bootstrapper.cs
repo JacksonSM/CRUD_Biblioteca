@@ -8,6 +8,8 @@ public static class Bootstrapper
     public static void AddApplication(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<AdicionarEditoraHandler>()
-                .AddScoped<ObterTodosEditoraHandler>();
+                .AddScoped<ObterTodosEditoraHandler>()
+                .AddScoped<ObterPorIdEditoraHandler>()
+                .AddScoped<AtualizarEditoraHandler>();
     }
 }
