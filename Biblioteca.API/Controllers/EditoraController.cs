@@ -24,4 +24,12 @@ public class EditoraController : ControllerBase
     {
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(new NoParametersCommand()));
     }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult> GetById(int id,
+        [FromServices] ObterPorIdEditoraHandler handler)
+    {
+        var command = new GetByIdCommand { Id = id };
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
+    }
 }

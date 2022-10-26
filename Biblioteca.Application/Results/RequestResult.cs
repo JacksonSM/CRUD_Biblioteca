@@ -27,5 +27,11 @@ namespace Biblioteca.Application.Results
             Message = $"Sem conteúdo";
             return this;
         }
+        public RequestResult NotFound()
+        {
+            StatusCode = 404;
+            Message = $"Não encontrado.";
+            return this;
+        }
     }
 }

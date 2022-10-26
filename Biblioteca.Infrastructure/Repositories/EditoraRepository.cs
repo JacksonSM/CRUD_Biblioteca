@@ -34,11 +34,22 @@ public class EditoraRepository : IEditoraRepository
         
         return editora;
     }
-    
+
+    public async Task<Editora> GetByIdAsync(int id)
+    {
+        var query = "SELECT * FROM [Biblioteca].[dbo].[Editoras] WHERE Id = @Id";
+
+        var parameters = new { Id = id };
+
+        return await _session.Connection.QueryFirstOrDefaultAsync<Editora>(query, parameters);
+    }
+
     public async Task<IEnumerable<Editora>> GetAllAsync()
     {
         var query = "SELECT * FROM [Biblioteca].[dbo].[Editoras]";
 
         return await _session.Connection.QueryAsync<Editora>(query);
     }
+
+
 }
