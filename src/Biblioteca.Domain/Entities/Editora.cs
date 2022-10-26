@@ -10,6 +10,8 @@ public class Editora : BaseEntity
 
     public List<Livro> Livros { get; private set; }
 
+    public Editora(){}
+
     public Editora(string razaoSocial, string email, string telefone)
     {
         RazaoSocial = razaoSocial;

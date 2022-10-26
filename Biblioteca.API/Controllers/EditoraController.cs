@@ -1,7 +1,7 @@
 ﻿using Biblioteca.API.Tools;
+using Biblioteca.Application.UseCases.Commands;
 using Biblioteca.Application.UseCases.Commands.Editora;
 using Biblioteca.Application.UseCases.Handlers.Editora;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Biblioteca.API.Controllers;
@@ -16,5 +16,12 @@ public class EditoraController : ControllerBase
         [FromServices] AdicionarEditoraHandler handler)
     {
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(addCommand));
+    }
+
+    [HttpGet]
+    public async Task<ActionResult> GetAll(
+    [FromServices] ObterTodosEditoraHandler handler)
+    {
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(new NoParametersCommand()));
     }
 }

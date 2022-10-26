@@ -21,5 +21,11 @@ namespace Biblioteca.Application.Results
             Data = data;
             return this;
         }
+        public RequestResult NoContext()
+        {
+            StatusCode = 204;
+            Message = $"Sem conteúdo";
+            return this;
+        }
     }
 }

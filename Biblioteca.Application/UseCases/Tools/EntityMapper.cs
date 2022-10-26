@@ -1,4 +1,4 @@
-namespace Endereco.Application.UseCases.Tools
+namespace Biblioteca.Application.UseCases.Tools
 {
     public static partial class EntityMapper
     {

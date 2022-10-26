@@ -1,7 +1,7 @@
 ﻿using Biblioteca.Application.Results;
 using Biblioteca.Application.UseCases.Commands.Editora;
+using Biblioteca.Application.UseCases.Tools;
 using Biblioteca.Domain.Interfaces;
-using Endereco.Application.UseCases.Tools;
 
 namespace Biblioteca.Application.UseCases.Handlers.Editora;
 public class AdicionarEditoraHandler : IHandler<AdicionarEditoraCommand>
@@ -11,7 +11,7 @@ public class AdicionarEditoraHandler : IHandler<AdicionarEditoraCommand>
 
     public AdicionarEditoraHandler(
         IEditoraRepository editoraRepository,
-       IUnitOfWork uow        )
+       IUnitOfWork uow)
     {
         _editoraRepository = editoraRepository;
         _uow = uow;
@@ -19,7 +19,7 @@ public class AdicionarEditoraHandler : IHandler<AdicionarEditoraCommand>
 
     public async Task<RequestResult> Handle(AdicionarEditoraCommand command)
     {
-        var editora = EntityMapper.ParseEndereco(command);
+        var editora = EntityMapper.ParseEditora(command);
 
         if (!editora.IsValid)
             return new RequestResult().BadRequest("Verifique os campos e tente novamente.", command);

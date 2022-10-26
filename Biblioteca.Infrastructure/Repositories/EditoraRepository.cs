@@ -2,9 +2,6 @@
 using Biblioteca.Domain.Interfaces;
 using Biblioteca.Infrastructure.Database;
 using Dapper;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
-using System.Data;
 
 namespace Biblioteca.Infrastructure.Repositories;
 public class EditoraRepository : IEditoraRepository
@@ -36,5 +33,12 @@ public class EditoraRepository : IEditoraRepository
         await _session.Connection.ExecuteAsync(query, parameters,_session.Transaction);
         
         return editora;
+    }
+    
+    public async Task<IEnumerable<Editora>> GetAllAsync()
+    {
+        var query = "SELECT * FROM [Biblioteca].[dbo].[Editoras]";
+
+        return await _session.Connection.QueryAsync<Editora>(query);
     }
 }

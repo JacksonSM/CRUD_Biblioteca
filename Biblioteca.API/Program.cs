@@ -1,3 +1,4 @@
+using Biblioteca.Application;
 using Biblioteca.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
