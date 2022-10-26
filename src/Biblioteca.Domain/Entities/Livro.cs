@@ -2,7 +2,7 @@
 public class Livro
 {
     public string Titulo { get; set; }
-    public DateOnly AnoLacamento { get; set; }
+    public DateOnly AnoLancamento { get; set; }
     public int QtdPaginas { get; set; }
 
     public int AutorId { get; set; }

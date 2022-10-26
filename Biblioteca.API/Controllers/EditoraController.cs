@@ -10,6 +10,7 @@ namespace Biblioteca.API.Controllers;
 [ApiController]
 public class EditoraController : ControllerBase
 {
+    [HttpPost]
     public async Task<ActionResult> Add(
         [FromBody]AdicionarEditoraCommand addCommand,
         [FromServices] AdicionarEditoraHandler handler)

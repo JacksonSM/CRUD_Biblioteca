@@ -5,9 +5,11 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca.Domain", "src\Biblioteca.Domain\Biblioteca.Domain.csproj", "{A48011FD-2D84-43D8-9061-57F8BFF743D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca.API", "Biblioteca.API\Biblioteca.API.csproj", "{1A67F532-53B6-4CEA-A7FC-C4F08D203E88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca.API", "Biblioteca.API\Biblioteca.API.csproj", "{1A67F532-53B6-4CEA-A7FC-C4F08D203E88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca.Application", "Biblioteca.Application\Biblioteca.Application.csproj", "{4CF62B9B-1089-4756-BCB8-3F91BDE57C26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca.Application", "Biblioteca.Application\Biblioteca.Application.csproj", "{4CF62B9B-1089-4756-BCB8-3F91BDE57C26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca.Infrastructure", "Biblioteca.Infrastructure\Biblioteca.Infrastructure.csproj", "{81011AE1-9C31-4732-8ABE-340732F50A64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{4CF62B9B-1089-4756-BCB8-3F91BDE57C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CF62B9B-1089-4756-BCB8-3F91BDE57C26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CF62B9B-1089-4756-BCB8-3F91BDE57C26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81011AE1-9C31-4732-8ABE-340732F50A64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81011AE1-9C31-4732-8ABE-340732F50A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81011AE1-9C31-4732-8ABE-340732F50A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81011AE1-9C31-4732-8ABE-340732F50A64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

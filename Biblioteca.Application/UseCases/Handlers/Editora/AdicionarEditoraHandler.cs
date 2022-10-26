@@ -11,7 +11,7 @@ public class AdicionarEditoraHandler : IHandler<AdicionarEditoraCommand>
 
     public AdicionarEditoraHandler(
         IEditoraRepository editoraRepository,
-        IUnitOfWork uow)
+       IUnitOfWork uow        )
     {
         _editoraRepository = editoraRepository;
         _uow = uow;
@@ -22,10 +22,14 @@ public class AdicionarEditoraHandler : IHandler<AdicionarEditoraCommand>
         var editora = EntityMapper.ParseEndereco(command);
 
         if (!editora.IsValid)
-            return new RequestResult().BadRequest("Verifique os campos e tente novamente.",editora);
+            return new RequestResult().BadRequest("Verifique os campos e tente novamente.", command);
+
+        _uow.BeginTransaction();
 
         await _editoraRepository.AddAsync(editora);
-        await _uow.Commit();
+
+        _uow.Commit();
+
         return new RequestResult().Ok(editora);
     }
 

@@ -1,5 +1,7 @@
 ﻿namespace Biblioteca.Domain.Interfaces;
-public interface IUnitOfWork
+public interface IUnitOfWork : IDisposable
 {
-    Task Commit();
+    void BeginTransaction();
+    void Commit();
+    void Rollback();
 }
