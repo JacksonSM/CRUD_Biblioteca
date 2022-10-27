@@ -17,7 +17,7 @@ public class EditoraRepository : IEditoraRepository
     {
         var query =
             @"INSERT INTO [Biblioteca].[dbo].[Editoras]
-            VALUES
+            output inserted.Id VALUES
             (
                 @RazaoSocial,
                 @Email,
@@ -28,10 +28,10 @@ public class EditoraRepository : IEditoraRepository
             RazaoSocial = editora.RazaoSocial,
             Email = editora.Email,
             Telefone = editora.Telefone
-        }; 
+        };
 
-        await _session.Connection.ExecuteAsync(query, parameters,_session.Transaction);
-        
+        editora.Id = await _session.Connection.QuerySingleAsync<int>(query, parameters, _session.Transaction);
+
         return editora;
     }
 
