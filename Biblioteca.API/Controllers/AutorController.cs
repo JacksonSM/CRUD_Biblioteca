@@ -1,5 +1,6 @@
 ﻿using Biblioteca.API.Tools;
 using Biblioteca.Application.DTOs;
+using Biblioteca.Application.UseCases.Commands;
 using Biblioteca.Application.UseCases.Commands.Autor;
 using Biblioteca.Application.UseCases.Handlers.Autor;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +12,7 @@ namespace Biblioteca.API.Controllers;
 [ApiController]
 public class AutorController : ControllerBase
 {
+
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(AutorDTO))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -19,5 +21,14 @@ public class AutorController : ControllerBase
         [FromServices] AdicionarAutorHandler handler)
     {
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
+    }
+
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AutorDTO))]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<ActionResult> GetAll(
+        [FromServices] ObterTodosAutoresHandler handler)
+    {
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(new NoParametersCommand()));
     }
 }

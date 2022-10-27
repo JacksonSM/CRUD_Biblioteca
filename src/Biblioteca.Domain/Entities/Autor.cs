@@ -9,6 +9,8 @@ public class Autor : BaseEntity
 
     public bool IsValid => Validate();
 
+    public Autor(){}
+
     public Autor(string nome, string email)
     {
         Nome = nome;

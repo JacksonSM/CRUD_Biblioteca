@@ -32,4 +32,11 @@ public class AutorRepository : IAutorRepository
 
         return autor;
     }
+
+    public async Task<IEnumerable<Autor>> GetAllAsync()
+    {
+        var query = "SELECT * FROM [Biblioteca].[dbo].[Autores]";
+
+        return await _session.Connection.QueryAsync<Autor>(query);
+    }
 }

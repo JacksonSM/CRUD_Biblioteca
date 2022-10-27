@@ -13,6 +13,7 @@ public static class Bootstrapper
                 .AddScoped<ObterPorIdEditoraHandler>()
                 .AddScoped<AtualizarEditoraHandler>();
 
-        services.AddScoped<AdicionarAutorHandler>();
+        services.AddScoped<AdicionarAutorHandler>()
+                .AddScoped<ObterTodosAutoresHandler>();
     }
 }
