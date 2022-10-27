@@ -31,4 +31,14 @@ public class AutorController : ControllerBase
     {
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(new NoParametersCommand()));
     }
+
+    [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AutorDTO))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> GetById(
+        int id,
+        [FromServices] ObterAutorPorIdHandler handler)
+    {
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(new GetByIdCommand { Id = id}));
+    }
 }

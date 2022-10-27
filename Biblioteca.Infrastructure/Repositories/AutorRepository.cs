@@ -39,4 +39,13 @@ public class AutorRepository : IAutorRepository
 
         return await _session.Connection.QueryAsync<Autor>(query);
     }
+
+    public async Task<Autor> GetByIdAsync(int id)
+    {
+        var query = "SELECT * FROM [Biblioteca].[dbo].[Autores] WHERE Id = @Id";
+
+        var parameters = new { Id = id };
+
+        return await _session.Connection.QueryFirstOrDefaultAsync<Autor>(query, parameters);
+    }
 }
