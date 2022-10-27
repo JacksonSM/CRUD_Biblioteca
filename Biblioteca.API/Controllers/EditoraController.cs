@@ -2,6 +2,7 @@
 using Biblioteca.Application.UseCases.Commands;
 using Biblioteca.Application.UseCases.Commands.Editora;
 using Biblioteca.Application.UseCases.Handlers.Editora;
+using Biblioteca.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Biblioteca.API.Controllers;
@@ -11,6 +12,8 @@ namespace Biblioteca.API.Controllers;
 public class EditoraController : ControllerBase
 {
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(Editora))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Add(
         [FromBody]AdicionarEditoraCommand addCommand,
         [FromServices] AdicionarEditoraHandler handler)

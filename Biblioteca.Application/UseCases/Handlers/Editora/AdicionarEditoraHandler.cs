@@ -30,7 +30,7 @@ public class AdicionarEditoraHandler : IHandler<AdicionarEditoraCommand>
 
         _uow.Commit();
 
-        return new RequestResult().Ok(editora);
+        return new RequestResult().Created(EntityMapper.ParseEditoraDTO(editora));
     }
 
 
