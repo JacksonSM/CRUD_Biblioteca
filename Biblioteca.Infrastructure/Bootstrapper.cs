@@ -9,7 +9,9 @@ public static class Bootstrapper
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<IEditoraRepository, EditoraRepository>();
+        services.AddScoped<IEditoraRepository, EditoraRepository>()
+                .AddScoped<IAutorRepository, AutorRepository>();
+
         services.AddScoped<DbSession>();
         services.AddTransient<IUnitOfWork, UnitOfWork>();
     }

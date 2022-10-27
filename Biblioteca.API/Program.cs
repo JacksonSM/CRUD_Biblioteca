@@ -3,6 +3,7 @@ using Biblioteca.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddRouting(option => option.LowercaseUrls = true);
 // Add services to the container.
 
 builder.Services.AddInfrastructure(builder.Configuration);
@@ -21,6 +22,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 

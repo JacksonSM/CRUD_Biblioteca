@@ -13,6 +13,13 @@ namespace Biblioteca.Application.Results
             Data = data;
             return this;
         }
+        public RequestResult Created(object data)
+        {
+            StatusCode = 201;
+            Message = "Recurso adicionado com sucesso";
+            Data = data;
+            return this;
+        }
 
         public RequestResult BadRequest(string detail, object data = null)
         {

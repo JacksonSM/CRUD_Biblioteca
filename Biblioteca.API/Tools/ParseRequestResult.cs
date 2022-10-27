@@ -12,6 +12,8 @@ namespace Biblioteca.API.Tools
             {
                 case (int)HttpStatusCode.OK:
                     return Ok(request);
+                case (int)HttpStatusCode.Created:
+                    return Created(string.Empty ,request);
                 case (int)HttpStatusCode.NoContent:
                     return NoContent();
                 case (int)HttpStatusCode.NotFound:

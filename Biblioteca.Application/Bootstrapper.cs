@@ -1,4 +1,5 @@
-﻿using Biblioteca.Application.UseCases.Handlers.Editora;
+﻿using Biblioteca.Application.UseCases.Handlers.Autor;
+using Biblioteca.Application.UseCases.Handlers.Editora;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,5 +12,7 @@ public static class Bootstrapper
                 .AddScoped<ObterTodosEditoraHandler>()
                 .AddScoped<ObterPorIdEditoraHandler>()
                 .AddScoped<AtualizarEditoraHandler>();
+
+        services.AddScoped<AdicionarAutorHandler>();
     }
 }
