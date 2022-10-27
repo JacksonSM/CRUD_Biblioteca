@@ -41,4 +41,17 @@ public class AutorController : ControllerBase
     {
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(new GetByIdCommand { Id = id}));
     }
+
+    [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AutorDTO))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Update(
+        int id,
+        [FromBody] AtualizarAutorCommand command,
+        [FromServices] AtualizarAutorHandler handler)
+    {
+        command.SetId(id);
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
+    }
 }

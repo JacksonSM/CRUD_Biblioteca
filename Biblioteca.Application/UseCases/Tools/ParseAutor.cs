@@ -24,4 +24,14 @@ public partial class EntityMapper
                 Email = autorEntity.Email
             };
     }
+
+    public static Autor ParseAutor(AtualizarAutorCommand command)
+    {
+        return
+            new Autor
+            (
+                nome: command.Nome,
+                email: command.Email
+            );
+    }
 }

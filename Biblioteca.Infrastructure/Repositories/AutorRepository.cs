@@ -48,4 +48,20 @@ public class AutorRepository : IAutorRepository
 
         return await _session.Connection.QueryFirstOrDefaultAsync<Autor>(query, parameters);
     }
+
+    public async Task UpdateAsync(int id, Autor autor)
+    {
+        var query =
+        @"UPDATE [Biblioteca].[dbo].[Autores]
+          SET [Nome] = @nome, [Email] = @email
+          WHERE Id = @id";
+
+        var parameters = new
+        {
+            Id = id,
+            Nome = autor.Nome,
+            Email = autor.Email
+        };
+        await _session.Connection.ExecuteAsync(query, parameters, _session.Transaction);
+    }
 }

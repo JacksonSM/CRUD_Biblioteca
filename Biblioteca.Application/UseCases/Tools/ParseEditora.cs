@@ -1,4 +1,5 @@
 using Biblioteca.Application.DTOs;
+using Biblioteca.Application.UseCases.Commands.Autor;
 using Biblioteca.Application.UseCases.Commands.Editora;
 using Biblioteca.Domain.Entities;
 
@@ -27,6 +28,7 @@ namespace Biblioteca.Application.UseCases.Tools
             tes.Id = editoraCommand.Id;
             return tes;
         }
+
         public static EditoraDTO ParseEditoraDTO(Editora editora)
         {
             return

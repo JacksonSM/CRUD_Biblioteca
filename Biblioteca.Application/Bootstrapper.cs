@@ -15,6 +15,7 @@ public static class Bootstrapper
 
         services.AddScoped<AdicionarAutorHandler>()
                 .AddScoped<ObterTodosAutoresHandler>()
-                .AddScoped<ObterAutorPorIdHandler>();
+                .AddScoped<ObterAutorPorIdHandler>()
+                .AddScoped<AtualizarAutorHandler>();
     }
 }
