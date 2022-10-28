@@ -29,4 +29,14 @@ public class LivroController : ControllerBase
     {
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(new NoParametersCommand()));
     }
+
+    [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(LivroDTO))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> GetById(
+    int id,
+    [FromServices] ObterLivroPorIdHandler handler)
+    {
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(new GetByIdCommand { Id = id }));
+    }
 }

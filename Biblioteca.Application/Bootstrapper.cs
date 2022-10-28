@@ -20,6 +20,7 @@ public static class Bootstrapper
                 .AddScoped<AtualizarAutorHandler>();
 
         services.AddScoped<AdicionarLivroHandler>()
-                .AddScoped<ObterTodosLivrosHandler>();
+                .AddScoped<ObterTodosLivrosHandler>()
+                .AddScoped<ObterLivroPorIdHandler>();
     }
 }

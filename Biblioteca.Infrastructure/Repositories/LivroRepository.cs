@@ -50,9 +50,29 @@ public class LivroRepository : ILivroRepository
             livro.Autor = autor;
             livro.Editora = editora;
             return livro;
-        }, splitOn: "Id, Id");
+        });
 
 
         return livros;
+    }
+
+    public async Task<Livro> GetByIdAsync(int id)
+    {
+        var query = @"SELECT * FROM [Biblioteca].[dbo].[Livros] AS Livro
+                      JOIN [Autores] AS Autor ON Autor.Id = Livro.AutorId
+                      JOIN [Editoras] AS Editora ON Editora.Id = Livro.EditoraId
+                      WHERE Livro.Id = @Id";
+
+        var livros = await _session.Connection.QueryAsync<Livro, Autor, Editora, Livro>(query, (livro, autor, editora) =>
+        {
+            livro.Autor = autor;
+            livro.Editora = editora;
+            return livro;
+        }, new { Id = id });
+
+        if (livros.Count() > 0)
+            return livros.ToList()[0];
+
+        return null;
     }
 }
