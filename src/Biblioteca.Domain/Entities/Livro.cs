@@ -7,10 +7,10 @@ public class Livro : BaseEntity
     public int QtdPaginas { get; private set; }
 
     public int AutorId { get; private set; }
-    public Autor Autor { get; private set; }
+    public Autor Autor { get; set; }
 
     public int EditoraId { get; private set; }
-    public Editora Editora { get; private set; }
+    public Editora Editora { get; set; }
 
     public bool IsValid => Validate();
 

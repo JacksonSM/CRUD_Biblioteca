@@ -22,6 +22,7 @@ public partial class EntityMapper
         if (livroEntity.Autor is null && livroEntity.Editora is null)
             return new LivroDTO
             {
+                Id = livroEntity.Id,
                 Titulo = livroEntity.Titulo,
                 QtdPaginas = livroEntity.QtdPaginas,
                 AnoLancamento = livroEntity.AnoLancamento
@@ -30,6 +31,7 @@ public partial class EntityMapper
         if (livroEntity.Autor is null && livroEntity.Editora is not null)
             return new LivroDTO
             {
+                Id = livroEntity.Id,
                 Titulo = livroEntity.Titulo,
                 QtdPaginas = livroEntity.QtdPaginas,
                 AnoLancamento = livroEntity.AnoLancamento,
@@ -39,6 +41,7 @@ public partial class EntityMapper
         if (livroEntity.Autor is not null && livroEntity.Editora is null)
             return new LivroDTO
             {
+                Id = livroEntity.Id,
                 Titulo = livroEntity.Titulo,
                 QtdPaginas = livroEntity.QtdPaginas,
                 AnoLancamento = livroEntity.AnoLancamento,
@@ -47,6 +50,7 @@ public partial class EntityMapper
 
             return new LivroDTO
             {
+                Id = livroEntity.Id,
                 Titulo = livroEntity.Titulo,
                 QtdPaginas = livroEntity.QtdPaginas,
                 AnoLancamento = livroEntity.AnoLancamento,

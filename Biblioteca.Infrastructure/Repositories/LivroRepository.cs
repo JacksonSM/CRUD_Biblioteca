@@ -39,4 +39,20 @@ public class LivroRepository : ILivroRepository
         return livro;
     }
 
+    public async Task<IEnumerable<Livro>> GetAllAsync()
+    {
+        var query = @"SELECT * FROM [Biblioteca].[dbo].[Livros] AS Livro
+                      JOIN [Autores] AS Autor ON Autor.Id = Livro.AutorId
+                      JOIN [Editoras] AS Editora ON Editora.Id = Livro.EditoraId";
+
+        var livros = await _session.Connection.QueryAsync<Livro, Autor, Editora, Livro>(query, (livro, autor, editora) =>
+        {
+            livro.Autor = autor;
+            livro.Editora = editora;
+            return livro;
+        }, splitOn: "Id, Id");
+
+
+        return livros;
+    }
 }

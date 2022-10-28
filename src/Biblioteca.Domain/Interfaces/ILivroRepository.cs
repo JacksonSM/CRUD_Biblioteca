@@ -4,4 +4,5 @@ namespace Biblioteca.Domain.Interfaces;
 public interface ILivroRepository
 {
     Task<Livro> AddAsync(Livro livro);
+    Task<IEnumerable<Livro>> GetAllAsync();
 }
