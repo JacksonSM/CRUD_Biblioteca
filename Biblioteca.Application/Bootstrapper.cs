@@ -21,6 +21,7 @@ public static class Bootstrapper
 
         services.AddScoped<AdicionarLivroHandler>()
                 .AddScoped<ObterTodosLivrosHandler>()
-                .AddScoped<ObterLivroPorIdHandler>();
+                .AddScoped<ObterLivroPorIdHandler>()
+                .AddScoped<AtualizarLivroHandler>();
     }
 }

@@ -75,4 +75,23 @@ public class LivroRepository : ILivroRepository
 
         return null;
     }
+
+    public async Task UpdateAsync(int id, Livro livro)
+    {
+
+        var query =
+        @"UPDATE [Biblioteca].[dbo].[Livros]
+          SET [Titulo] = @titulo, [AnoLancamento] = @anoLancamento, [QtdPaginas] = @qtdPaginas
+          WHERE Id = @id";
+
+        var parameters = new
+        {
+            Id = id,
+            titulo = livro.Titulo,
+            anoLancamento = livro.AnoLancamento,
+            qtdPaginas = livro.QtdPaginas
+        };
+
+        await _session.Connection.ExecuteAsync(query, parameters, _session.Transaction);
+    }
 }

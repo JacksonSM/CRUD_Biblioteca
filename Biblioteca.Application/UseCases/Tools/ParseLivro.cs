@@ -17,6 +17,16 @@ public partial class EntityMapper
                 editoraId: livroCommand.EditoraId
             );
     }
+    public static Livro ParseLivro(AtualizarLivroCommand livroCommand)
+    {
+        return
+            new Livro
+            {
+                Titulo = livroCommand.Titulo,
+                AnoLancamento = livroCommand.AnoLancamento,
+                QtdPaginas = livroCommand.QtdPaginas
+            };
+    }
     public static LivroDTO ParseLivroDTO(Livro livroEntity)
     {
         if (livroEntity.Autor is null && livroEntity.Editora is null)

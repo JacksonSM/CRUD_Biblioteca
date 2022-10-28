@@ -39,4 +39,17 @@ public class LivroController : ControllerBase
     {
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(new GetByIdCommand { Id = id }));
     }
+
+    [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(LivroDTO))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Update(
+    int id,
+    [FromBody] AtualizarLivroCommand command,
+    [FromServices] AtualizarLivroHandler handler)
+    {
+        command.SetId(id);
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
+    }
 }

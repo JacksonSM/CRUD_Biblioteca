@@ -2,9 +2,9 @@
 
 public class Livro : BaseEntity
 {
-    public string Titulo { get; private set; }
-    public int AnoLancamento { get; private set; }
-    public int QtdPaginas { get; private set; }
+    public string Titulo { get; set; }
+    public int AnoLancamento { get; set; }
+    public int QtdPaginas { get; set; }
 
     public int AutorId { get; private set; }
     public Autor Autor { get; set; }
