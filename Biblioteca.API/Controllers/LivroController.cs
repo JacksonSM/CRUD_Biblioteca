@@ -25,9 +25,10 @@ public class LivroController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(LivroDTO))]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<ActionResult> GetAll(
-    [FromServices] ObterTodosLivrosHandler handler)
+        [FromQuery] ObterLivrosCommand command,
+        [FromServices] ObterTodosLivrosHandler handler)
     {
-        return new ParseRequestResult().ParseToActionResult(await handler.Handle(new NoParametersCommand()));
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
     }
 
     [HttpGet("{id}")]

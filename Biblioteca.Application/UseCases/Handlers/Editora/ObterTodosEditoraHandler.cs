@@ -15,7 +15,7 @@ public class ObterTodosEditoraHandler : IHandler<NoParametersCommand>
         _editoraRepository = editoraRepository;
     }
 
-    public async Task<RequestResult> Handle(NoParametersCommand command)
+    public async Task<RequestResult> Handle(NoParametersCommand _)
     {
         var editoras = await _editoraRepository.GetAllAsync();
         List<EditoraDTO> editoraDTOs = new();

@@ -15,7 +15,7 @@ public class ObterTodosAutoresHandler : IHandler<NoParametersCommand>
         _autorRepository = autorRepository;
     }
 
-    public async Task<RequestResult> Handle(NoParametersCommand command)
+    public async Task<RequestResult> Handle(NoParametersCommand _)
     {
         var autoresEntity = await _autorRepository.GetAllAsync();
         List<AutorDTO> autoresDTOs = new();

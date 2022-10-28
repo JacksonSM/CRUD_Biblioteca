@@ -1,4 +1,5 @@
 ﻿using Biblioteca.Domain.Entities;
+using Biblioteca.Domain.Helpers;
 using Biblioteca.Domain.Interfaces;
 using Biblioteca.Infrastructure.Database;
 using Dapper;
@@ -39,18 +40,25 @@ public class LivroRepository : ILivroRepository
         return livro;
     }
 
-    public async Task<IEnumerable<Livro>> GetAllAsync()
+    public async Task<IEnumerable<Livro>> GetAllAsync(GetAllQuery queryRequest)
     {
-        var query = @"SELECT * FROM [Biblioteca].[dbo].[Livros] AS Livro
+        var query = @"SELECT * FROM [Biblioteca].[dbo].[Livros] AS Livro 
                       JOIN [Autores] AS Autor ON Autor.Id = Livro.AutorId
-                      JOIN [Editoras] AS Editora ON Editora.Id = Livro.EditoraId";
+                      JOIN [Editoras] AS Editora ON Editora.Id = Livro.EditoraId ORDER BY Livro.Titulo
+                      OFFSET (@paginaAtual) ROWS FETCH NEXT (@registrosPorPagina) ROWS ONLY ";
+
+        var parameters = new
+        {
+            paginaAtual = queryRequest.PaginaAtual,
+            registrosPorPagina = queryRequest.RegistrosPorPagina
+        };
 
         var livros = await _session.Connection.QueryAsync<Livro, Autor, Editora, Livro>(query, (livro, autor, editora) =>
         {
             livro.Autor = autor;
             livro.Editora = editora;
             return livro;
-        });
+        },parameters);
 
 
         return livros;
