@@ -68,4 +68,11 @@ public class EditoraRepository : IEditoraRepository
         await _session.Connection.ExecuteAsync(query, parameters, _session.Transaction);
     }
 
+    public async Task<bool> ExistsByIdAsync(int id)
+    {
+        var query = @"SELECT COUNT(*) FROM [Biblioteca].[dbo].[Editoras] WHERE Id = @Id;";
+        var result = await _session.Connection.QueryFirstAsync<int>(query, new { Id = id });
+
+        return result > 0 ? true : false;
+    }
 }

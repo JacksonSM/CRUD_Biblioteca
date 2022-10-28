@@ -64,4 +64,12 @@ public class AutorRepository : IAutorRepository
         };
         await _session.Connection.ExecuteAsync(query, parameters, _session.Transaction);
     }
+
+    public async Task<bool> ExistsByIdAsync(int id)
+    {
+        var query = @"SELECT COUNT(*) FROM [Biblioteca].[dbo].[Autores] WHERE Id = @Id;";
+        var result = await _session.Connection.QueryFirstAsync<int>(query, new { Id = id });
+
+        return result > 0 ? true : false;
+    }
 }

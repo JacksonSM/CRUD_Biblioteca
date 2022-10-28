@@ -7,4 +7,5 @@ public interface IEditoraRepository
     Task<IEnumerable<Editora>> GetAllAsync();
     Task<Editora> GetByIdAsync(int id);
     Task UpdateAsync(int id, Editora editora);
+    Task<bool> ExistsByIdAsync(int id);
 }

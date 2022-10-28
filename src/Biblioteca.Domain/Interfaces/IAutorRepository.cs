@@ -7,4 +7,5 @@ public interface IAutorRepository
     Task<IEnumerable<Autor>> GetAllAsync();
     Task<Autor> GetByIdAsync(int id);
     Task UpdateAsync(int id, Autor autor);
+    Task<bool> ExistsByIdAsync(int id);
 }
