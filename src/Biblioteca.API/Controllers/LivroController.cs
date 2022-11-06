@@ -3,7 +3,6 @@ using Biblioteca.Application.DTOs;
 using Biblioteca.Application.UseCases.Commands;
 using Biblioteca.Application.UseCases.Commands.Livro;
 using Biblioteca.Application.UseCases.Handlers.Livro;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Biblioteca.API.Controllers;

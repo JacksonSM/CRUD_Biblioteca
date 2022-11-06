@@ -24,6 +24,7 @@ public class AdicionarAutorHandler : IHandler<AdicionarAutorCommand>
         if (!autorEntity.IsValid)
             return new RequestResult().BadRequest("Verifique os campos e tente novamente.", command);
 
+
         _uow.BeginTransaction();
 
         await _autorRepository.AddAsync(autorEntity);
